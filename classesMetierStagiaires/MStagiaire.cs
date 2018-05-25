@@ -19,7 +19,7 @@ namespace classesMetierStagiaires
         /// <param name="uneRue">adresse</param>
         /// <param name="uneVille">ville</param>
         /// <param name="UnCodePostal">code postal</param>
-        public MStagiaire(Int32 unNumosia, String unNom, String unPrenom, String uneRue, String uneVille, String UnCodePostal)
+        public MStagiaire(Int32 unNumosia, String unNom, String unPrenom, String uneRue, String uneVille, String UnCodePostal,int nbreNotesStagiaire, double pointsNotesStagiaire)
         {
             // identifiant en lecture seule ==> affectation directe attribut
             this.numOsiaStagiaire = unNumosia;
@@ -30,8 +30,8 @@ namespace classesMetierStagiaires
             this.VilleStagiaire = uneVille;
             this.CodePostalStagiaire = UnCodePostal;
             // attributs sans accesseurs set
-            this.nbreNotesStagiaire = 0;
-            this.pointsNotesStagiaire = 0;
+            this.nbreNotesStagiaire = nbreNotesStagiaire;
+            this.pointsNotesStagiaire = pointsNotesStagiaire;
 
         }
         /// <summary>
@@ -158,11 +158,21 @@ namespace classesMetierStagiaires
         /// </summary>
         protected Int32 nbreNotesStagiaire;
 
+        public int NbreNotes
+        {
+            get { return this.nbreNotesStagiaire; }
+        }
+
         /// <summary>
         /// cumul des points obtenus
         /// </summary>
         protected Double pointsNotesStagiaire; 
         
+        public double PointsNotes
+        {
+            get { return this.pointsNotesStagiaire; }
+        }
+
         /// <summary>
         /// permet d'alimenter NbreNotes et PointsNotes
         /// </summary>

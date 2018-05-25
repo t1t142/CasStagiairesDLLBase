@@ -15,6 +15,7 @@ namespace classesMetierStagiaires
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
             Application.Run(new frmMDI());
+           
         }
     }
 }

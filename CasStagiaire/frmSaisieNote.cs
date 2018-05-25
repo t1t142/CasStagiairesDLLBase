@@ -47,5 +47,10 @@ namespace classesMetierStagiaires
         {
             this.DialogResult = DialogResult.Cancel;
         }
+
+        private void frmSaisieNote_Load(object sender, EventArgs e)
+        {
+
+        }
     }
 }

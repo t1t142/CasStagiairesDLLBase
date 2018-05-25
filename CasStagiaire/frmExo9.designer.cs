@@ -95,6 +95,7 @@
             this.Controls.Add(this.grdStagiaires);
             this.Name = "frmExo9";
             this.Text = "Visulisation des Stagiaires de la section CDI1";
+            this.Load += new System.EventHandler(this.frmExo9_Load);
             ((System.ComponentModel.ISupportInitialize)(this.grdStagiaires)).EndInit();
             this.ResumeLayout(false);
 

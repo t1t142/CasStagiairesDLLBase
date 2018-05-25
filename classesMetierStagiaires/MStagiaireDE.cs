@@ -21,9 +21,9 @@ namespace classesMetierStagiaires
         /// <param name="uneVille">Ville</param>
         /// <param name="UnCodePostal">Code Postal</param>
         /// <param name="unRemuAfpa">Rémunaration par l'Afpa</param>
-        public MStagiaireDE(Int32 unNumosia, String unNom, String unPrenom, String uneRue, String uneVille, String UnCodePostal,
+        public MStagiaireDE(Int32 unNumosia, String unNom, String unPrenom, String uneRue, String uneVille, String UnCodePostal,int nbreNotesStagiaire, double pointsNotesStagiaire,
             Boolean unRemuAfpa)
-            : base( unNumosia,  unNom,  unPrenom,  uneRue,  uneVille,  UnCodePostal)
+            : base( unNumosia,  unNom,  unPrenom,  uneRue,  uneVille,  UnCodePostal,nbreNotesStagiaire,pointsNotesStagiaire)
         {
             this.RemuAfpaStagiaire = unRemuAfpa;
         }

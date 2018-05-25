@@ -80,6 +80,8 @@ namespace classesMetierStagiaires
                         base.txtAdresse.Text,
                         base.txtVille.Text,
                         base.txtCodePostal.Text.Trim(),
+                        0,
+                        0,
                         this.chkRemuAfpa.Checked);
                 }
                 else // c'est un CIF
@@ -107,6 +109,9 @@ namespace classesMetierStagiaires
                         base.txtAdresse.Text,
                         base.txtVille.Text,
                         base.txtCodePostal.Text.Trim(),
+                        0,
+                        0,
+
                         this.txtFongecif.Text,
                         leTypeCIF);
                     
@@ -213,6 +218,11 @@ namespace classesMetierStagiaires
             //{
             //    this.chkRemuAfpa.Enabled = false;
             //}
+        }
+
+        private void frmAjoutStagiaire_Load(object sender, EventArgs e)
+        {
+
         }
     }
 }

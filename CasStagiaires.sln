@@ -1,11 +1,11 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
-# Visual Studio 2013
-VisualStudioVersion = 12.0.30723.0
+# Visual Studio 15
+VisualStudioVersion = 15.0.27703.2018
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CasStagiaire", "CasStagiaire\CasStagiaire.csproj", "{7237811C-435D-42FF-874D-A618DFDF20F7}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "classesMetier", "classesMetierStagiaires\classesMetierStagiaires.csproj", "{BABD96C6-B9B7-49FB-819B-4E2E298F6F6C}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "classesMetierStagiaires", "classesMetierStagiaires\classesMetierStagiaires.csproj", "{BABD96C6-B9B7-49FB-819B-4E2E298F6F6C}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -24,5 +24,8 @@ Global
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {D4CE1260-AE96-4741-9212-4E464BC0DFCD}
 	EndGlobalSection
 EndGlobal

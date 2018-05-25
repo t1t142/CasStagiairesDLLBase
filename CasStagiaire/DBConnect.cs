@@ -172,9 +172,9 @@ namespace CasStagiaire
 
             if (st is MStagiaireCIF)
             {
-                MStagiaireCIF st;
+               // MStagiaireCIF st;
                 type = "CIF";
-                typecif = st.TypeCifStagiaire;
+                //typecif = st.TypeCifStagiaire;
             }
             else
             {
@@ -197,9 +197,9 @@ namespace CasStagiaire
                 cmd.Parameters.AddWithValue("@PointsNotes", st.PointsNotes);
                 cmd.Parameters.AddWithValue("@NbreNotes", st.NbreNotes);
                 cmd.Parameters.AddWithValue("@Type", type);
-                cmd.Parameters.AddWithValue("@TypeCif", typecif);
-                cmd.Parameters.AddWithValue("@FongeCif", fongecif);
-                cmd.Parameters.AddWithValue("@RemuAfpa", remuafpa);
+                //cmd.Parameters.AddWithValue("@TypeCif", typecif);
+                //cmd.Parameters.AddWithValue("@FongeCif", fongecif);
+                //cmd.Parameters.AddWithValue("@RemuAfpa", remuafpa);
                 cmd.ExecuteNonQuery();
 
                 //close connection

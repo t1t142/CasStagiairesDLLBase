@@ -66,7 +66,7 @@ namespace classesMetierStagiaires
         {
             // créer une référence d'objet MStagiaire 
             MStagiaire nouveauStagiaire;
-
+            
             try
             {
                 
@@ -120,6 +120,7 @@ namespace classesMetierStagiaires
                 // dans tous les cas, ajouter la référence d'objet MStagiaire dans la collection de sa section
                 this.laSection.Ajouter(nouveauStagiaire);
                 
+               
                 // ******* partie à enrichir : insertion dans la BDD *******
                 // ---------------------------------------------------------
 

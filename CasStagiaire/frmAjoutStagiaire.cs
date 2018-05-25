@@ -83,6 +83,8 @@ namespace classesMetierStagiaires
                         0,
                         0,
                         this.chkRemuAfpa.Checked);
+                    CasStagiaire.DBConnect.conn
+
                 }
                 else // c'est un CIF
                 {

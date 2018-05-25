@@ -82,6 +82,7 @@ namespace CasStagiaire
         public void SelectStagiaire(MSection laSection)
         {
             string query = "SELECT * FROM mstagiaire";
+            laSection.SupprimerStagiaires();
 
           
             //Open connection
@@ -166,7 +167,7 @@ namespace CasStagiaire
             String typecif;
             String fongecif;
 
-            string query = "INSERT INTO eleve VALUES(Null, @Nom, @Prenom, @NumOsia, @Rue, @CodePostal, @Ville, @PointsNotes, @NbreNotes, @Type, @TypeCif, @FongeCif, Null)";
+            string query = "INSERT INTO mstagiaire VALUES(Null, @Nom, @Prenom, @NumOsia, @Rue, @CodePostal, @Ville, @PointsNotes, @NbreNotes, @Type, @TypeCif, @FongeCif, Null)";
 
             type = "CIF";
             typecif = st.TypeCifStagiaire;
@@ -195,6 +196,10 @@ namespace CasStagiaire
                 //close connection
                 this.CloseConnection();
             }
+            else
+            {
+                MessageBox.Show("Vous n'êtes pas connecté à la base de données");
+            }
         }
 
         public void InsertStagiaireDE(MStagiaireDE st)
@@ -202,7 +207,7 @@ namespace CasStagiaire
             String type;
             Boolean remuafpa;
 
-            string query = "INSERT INTO eleve VALUES(Null, @Nom, @Prenom, @NumOsia, @Rue, @CodePostal, @Ville, @PointsNotes, @NbreNotes, @Type, Null, Null, @RemuAfpa)";
+            string query = "INSERT INTO mstagiaire VALUES(Null, @Nom, @Prenom, @NumOsia, @Rue, @CodePostal, @Ville, @PointsNotes, @NbreNotes, @Type, Null, Null, @RemuAfpa)";
 
             type = "DE";
             remuafpa = st.RemuAfpaStagiaire;
@@ -228,6 +233,10 @@ namespace CasStagiaire
 
                 //close connection
                 this.CloseConnection();
+            }
+            else
+            {
+                MessageBox.Show("Vous n'êtes pas connecté à la base de données");
             }
         }
 

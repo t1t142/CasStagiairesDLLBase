@@ -223,7 +223,11 @@ namespace classesMetierStagiaires
             return this.dtStagiaires;
         }
 
-
+        public void SupprimerStagiaires()
+        {
+            this.lesStagiaires.Clear();
+            
+        }
 
     }
 }

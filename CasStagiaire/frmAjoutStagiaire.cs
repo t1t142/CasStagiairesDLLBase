@@ -5,6 +5,7 @@ using System.Data;
 using System.Drawing;
 using System.Text;
 using System.Windows.Forms;
+using CasStagiaire;
 
 namespace classesMetierStagiaires
 {
@@ -65,15 +66,15 @@ namespace classesMetierStagiaires
         private Boolean instancie()
         {
             // créer une référence d'objet MStagiaire 
-            MStagiaire nouveauStagiaire;
-            
+            MStagiaireCIF nouveauStagiaireCif;
+            MStagiaireDE st;
             try
             {
                 
                 if (this.rbtDE.Checked) // c'est un DE
                 {
                     // instancier un stagiaire spécialisé DE et lui affecter toutes ses propriétés
-                    nouveauStagiaire = new MStagiaireDE(
+                    st = new MStagiaireDE(
                         Int32.Parse(base.txtOSIA.Text.Trim()),
                         base.txtNom.Text,
                         base.txtPrenom.Text,
@@ -83,6 +84,10 @@ namespace classesMetierStagiaires
                         0,
                         0,
                         this.chkRemuAfpa.Checked);
+                    
+                    DBConnect.conn.InsertStagiaireDE(st);
+                   // this.laSection.Ajouter(st);
+
                 }
                 else // c'est un CIF
                 {
@@ -102,7 +107,7 @@ namespace classesMetierStagiaires
                     }
 
                     // instancier un stagiaire spécialisé CIF et lui affecter toutes ses propriétés
-                    nouveauStagiaire = new MStagiaireCIF(
+                    nouveauStagiaireCif = new MStagiaireCIF(
                         Int32.Parse(base.txtOSIA.Text.Trim()),
                         base.txtNom.Text,
                         base.txtPrenom.Text,
@@ -114,11 +119,11 @@ namespace classesMetierStagiaires
 
                         this.txtFongecif.Text,
                         leTypeCIF);
-                    
-                  }
+                    DBConnect.conn.InsertStagiaireCif(nouveauStagiaireCif);
+                }
 
                 // dans tous les cas, ajouter la référence d'objet MStagiaire dans la collection de sa section
-                this.laSection.Ajouter(nouveauStagiaire);
+                //this.laSection.Ajouter(nouveauStagiaire);
                 
                
                 // ******* partie à enrichir : insertion dans la BDD *******
@@ -129,7 +134,7 @@ namespace classesMetierStagiaires
             }
             catch (Exception ex)
             {
-                nouveauStagiaire = null;
+                nouveauStagiaireCif = null;
                 MessageBox.Show("Erreur : \n" + ex.Message, "Ajout de stagiaire");
                 return false;
             }

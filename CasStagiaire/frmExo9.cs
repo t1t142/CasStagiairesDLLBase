@@ -3,6 +3,7 @@ using System.Data;
 using System.Drawing;
 using System.Text;
 using System.Windows.Forms;
+using CasStagiaire;
 
 
 
@@ -56,7 +57,7 @@ namespace classesMetierStagiaires
             
             // ajoute le stagiaire instancié à la collection de la section CDI1
            // this.laSection.Ajouter(unStagiaire);
-            CasStagiaire.DBConnect.conn.SelectStagiaire(laSection);
+            DBConnect.conn.SelectStagiaire(laSection);
 
         }
 
@@ -66,6 +67,8 @@ namespace classesMetierStagiaires
         /// </summary>
         private void afficheStagiaires()
         {
+            DBConnect.conn.SelectStagiaire(laSection);
+
             // déterminer l'origine des données à afficher : 
             // appel de la méthode de la classe MSection 
             // qui alimente et retourne copie de sa 
@@ -73,6 +76,7 @@ namespace classesMetierStagiaires
             this.grdStagiaires.DataSource = laSection.ListerStagiaires(); 
             // refraîchir l'affichage
             this.grdStagiaires.Refresh();
+            
         }
 
         /// <summary>

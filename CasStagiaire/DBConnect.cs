@@ -122,7 +122,7 @@ namespace CasStagiaire
                     }
 
 
-                    if (dataReader["type"].ToString() == "CDI")
+                    if (dataReader["type"].ToString() == "CIF")
                     {
                         // instancier un stagiaire spécialisé DE et lui affecter toutes ses propriétés
                        
@@ -137,7 +137,7 @@ namespace CasStagiaire
                                   int.Parse(dataReader["nbrenotes"].ToString()),
                                 double.Parse(dataReader["pointsnotes"].ToString()),
                                  dataReader["fongecif"].ToString(),
-                                  dataReader["type"].ToString()
+                                  dataReader["typecif"].ToString()
 
                                  );
 
@@ -160,11 +160,26 @@ namespace CasStagiaire
            
         }
         //Insert statement
-        public void InsertEleve(String nom, String prenom)
+        public void InsertStagiaire(MStagiaire st)
         {
+            
+            String type;
+            String typecif;
+            String fongecif;
+            String remuafpa;
 
+            string query = "INSERT INTO eleve VALUES(Null, @Nom, @Prenom,  @NumOsia, @Rue, @CodePostal, @Ville, @PointsNotes, @NbreNotes, @Type, @TypeCif, @FongeCif, @RemuAfpa)";
 
-            string query = "INSERT INTO eleve  VALUES(Null,'" + nom + "','" + prenom + "')";
+            if (st is MStagiaireCIF)
+            {
+                MStagiaireCIF st;
+                type = "CIF";
+                typecif = st.TypeCifStagiaire;
+            }
+            else
+            {
+                type = "DE";
+            }
 
             //open connection
             if (this.OpenConnection() == true)
@@ -173,6 +188,18 @@ namespace CasStagiaire
                 MySqlCommand cmd = new MySqlCommand(query, connection);
 
                 //Execute command
+                cmd.Parameters.AddWithValue("@Nom", st.NomStagiaire);
+                cmd.Parameters.AddWithValue("@Prenom", st.PrenomStagiaire);
+                cmd.Parameters.AddWithValue("@NumOsia", st.NumOsiaStagiaire);
+                cmd.Parameters.AddWithValue("@Rue", st.RueStagiaire);
+                cmd.Parameters.AddWithValue("@CodePostal", st.CodePostalStagiaire);
+                cmd.Parameters.AddWithValue("@Ville", st.VilleStagiaire);
+                cmd.Parameters.AddWithValue("@PointsNotes", st.PointsNotes);
+                cmd.Parameters.AddWithValue("@NbreNotes", st.NbreNotes);
+                cmd.Parameters.AddWithValue("@Type", type);
+                cmd.Parameters.AddWithValue("@TypeCif", typecif);
+                cmd.Parameters.AddWithValue("@FongeCif", fongecif);
+                cmd.Parameters.AddWithValue("@RemuAfpa", remuafpa);
                 cmd.ExecuteNonQuery();
 
                 //close connection

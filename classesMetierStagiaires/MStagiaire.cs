@@ -158,11 +158,21 @@ namespace classesMetierStagiaires
         /// </summary>
         protected Int32 nbreNotesStagiaire;
 
+        public int NbreNotes
+        {
+            get { return this.nbreNotesStagiaire; }
+        }
+
         /// <summary>
         /// cumul des points obtenus
         /// </summary>
         protected Double pointsNotesStagiaire; 
         
+        public double PointsNotes
+        {
+            get { return this.pointsNotesStagiaire; }
+        }
+
         /// <summary>
         /// permet d'alimenter NbreNotes et PointsNotes
         /// </summary>

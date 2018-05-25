@@ -160,7 +160,7 @@ namespace CasStagiaire
            
         }
         //Insert statement
-        public void InsertStagiaire(MStagiaire st)
+        public void InsertStagiaireDE(MStagiaireCIF st)
         {
             
             String type;
@@ -172,7 +172,7 @@ namespace CasStagiaire
 
             if (st is MStagiaireCIF)
             {
-                MStagiaireCIF st;
+               
                 type = "CIF";
                 typecif = st.TypeCifStagiaire;
             }

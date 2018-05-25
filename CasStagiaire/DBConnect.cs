@@ -160,26 +160,17 @@ namespace CasStagiaire
            
         }
         //Insert statement
-        public void InsertStagiaireDE(MStagiaireCIF st)
+        public void InsertStagiaireCif(MStagiaireCIF st)
         {
-            
             String type;
             String typecif;
             String fongecif;
-            String remuafpa;
 
-            string query = "INSERT INTO eleve VALUES(Null, @Nom, @Prenom,  @NumOsia, @Rue, @CodePostal, @Ville, @PointsNotes, @NbreNotes, @Type, @TypeCif, @FongeCif, @RemuAfpa)";
+            string query = "INSERT INTO eleve VALUES(Null, @Nom, @Prenom, @NumOsia, @Rue, @CodePostal, @Ville, @PointsNotes, @NbreNotes, @Type, @TypeCif, @FongeCif, Null)";
 
-            if (st is MStagiaireCIF)
-            {
-               
-                type = "CIF";
-                typecif = st.TypeCifStagiaire;
-            }
-            else
-            {
-                type = "DE";
-            }
+            type = "CIF";
+            typecif = st.TypeCifStagiaire;
+            fongecif = st.FongecifStagiaire;
 
             //open connection
             if (this.OpenConnection() == true)
@@ -199,13 +190,47 @@ namespace CasStagiaire
                 cmd.Parameters.AddWithValue("@Type", type);
                 cmd.Parameters.AddWithValue("@TypeCif", typecif);
                 cmd.Parameters.AddWithValue("@FongeCif", fongecif);
-                cmd.Parameters.AddWithValue("@RemuAfpa", remuafpa);
                 cmd.ExecuteNonQuery();
 
                 //close connection
                 this.CloseConnection();
             }
         }
+
+        public void InsertStagiaireDE(MStagiaireDE st)
+        {
+            String type;
+            Boolean remuafpa;
+
+            string query = "INSERT INTO eleve VALUES(Null, @Nom, @Prenom, @NumOsia, @Rue, @CodePostal, @Ville, @PointsNotes, @NbreNotes, @Type, Null, Null, @RemuAfpa)";
+
+            type = "DE";
+            remuafpa = st.RemuAfpaStagiaire;
+
+            //open connection
+            if (this.OpenConnection() == true)
+            {
+                //create command and assign the query and connection from the constructor
+                MySqlCommand cmd = new MySqlCommand(query, connection);
+
+                //Execute command
+                cmd.Parameters.AddWithValue("@Nom", st.NomStagiaire);
+                cmd.Parameters.AddWithValue("@Prenom", st.PrenomStagiaire);
+                cmd.Parameters.AddWithValue("@NumOsia", st.NumOsiaStagiaire);
+                cmd.Parameters.AddWithValue("@Rue", st.RueStagiaire);
+                cmd.Parameters.AddWithValue("@CodePostal", st.CodePostalStagiaire);
+                cmd.Parameters.AddWithValue("@Ville", st.VilleStagiaire);
+                cmd.Parameters.AddWithValue("@PointsNotes", st.PointsNotes);
+                cmd.Parameters.AddWithValue("@NbreNotes", st.NbreNotes);
+                cmd.Parameters.AddWithValue("@Type", type);
+                cmd.Parameters.AddWithValue("@Remuafpa", remuafpa);
+                cmd.ExecuteNonQuery();
+
+                //close connection
+                this.CloseConnection();
+            }
+        }
+
 
         //Update statement
         public void UpdateEleve()

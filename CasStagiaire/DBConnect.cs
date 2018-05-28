@@ -167,7 +167,7 @@ namespace CasStagiaire
             String typecif;
             String fongecif;
 
-            string query = "INSERT INTO mstagiaire VALUES(Null, @Nom, @Prenom, @NumOsia, @Rue, @CodePostal, @Ville, @PointsNotes, @NbreNotes, @Type, @TypeCif, @FongeCif, Null)";
+            string query = "INSERT INTO mstagiaire VALUES(Null, 1, @Nom, @Prenom, @NumOsia, @Rue, @CodePostal, @Ville, @PointsNotes, @NbreNotes, @Type, @TypeCif, @FongeCif, Null)";
 
             type = "CIF";
             typecif = st.TypeCifStagiaire;
@@ -207,7 +207,7 @@ namespace CasStagiaire
             String type;
             Boolean remuafpa;
 
-            string query = "INSERT INTO mstagiaire VALUES(Null, @Nom, @Prenom, @NumOsia, @Rue, @CodePostal, @Ville, @PointsNotes, @NbreNotes, @Type, Null, Null, @RemuAfpa)";
+            string query = "INSERT INTO mstagiaire VALUES(Null, 1, @Nom, @Prenom, @NumOsia, @Rue, @CodePostal, @Ville, @PointsNotes, @NbreNotes, @Type, Null, Null, @RemuAfpa)";
 
             type = "DE";
             remuafpa = st.RemuAfpaStagiaire;

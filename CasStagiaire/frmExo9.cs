@@ -3,6 +3,7 @@ using System.Data;
 using System.Drawing;
 using System.Text;
 using System.Windows.Forms;
+using CasStagiaire;
 
 
 
@@ -31,7 +32,7 @@ namespace classesMetierStagiaires
 
             // TODO : initialisation du jeu d'essai ==> récupérer depuis BDD
             this.init();
-            
+           
             // afficher la liste des stagiaires de la section
             this.afficheStagiaires();
         }
@@ -51,10 +52,13 @@ namespace classesMetierStagiaires
             //----------------------------------------------------------------------------------
             // instancie en dur un stagiaire 
             MStagiaire unStagiaire;
-            unStagiaire = new MStagiaireDE(11111, "DUPOND", "Albert", "12 rue des Fleurs", "NICE", "06300", false);
 
+            //unStagiaire = new MStagiaireDE(11111, "DUPOND", "Albert", "12 rue des Fleurs", "NICE", "06300", false);
+            
             // ajoute le stagiaire instancié à la collection de la section CDI1
-            this.laSection.Ajouter(unStagiaire);
+           // this.laSection.Ajouter(unStagiaire);
+            DBConnect.conn.SelectStagiaire(laSection);
+
         }
 
         /// <summary>
@@ -63,6 +67,8 @@ namespace classesMetierStagiaires
         /// </summary>
         private void afficheStagiaires()
         {
+            DBConnect.conn.SelectStagiaire(laSection);
+
             // déterminer l'origine des données à afficher : 
             // appel de la méthode de la classe MSection 
             // qui alimente et retourne copie de sa 
@@ -70,6 +76,7 @@ namespace classesMetierStagiaires
             this.grdStagiaires.DataSource = laSection.ListerStagiaires(); 
             // refraîchir l'affichage
             this.grdStagiaires.Refresh();
+            
         }
 
         /// <summary>
@@ -148,6 +155,7 @@ namespace classesMetierStagiaires
                 // demander confirmation de la suppression
                 // NB: messagebox retourne une valeur exploitable !
                 if (MessageBox.Show("Voulez-vous supprimer le stagiaire numéro :" + cleStagiaire.ToString(), "Suppression", MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.Yes)
+
                 {
                     // supprimer et compacter la collection
                     this.laSection.Supprimer(cleStagiaire);

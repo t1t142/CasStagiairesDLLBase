@@ -22,9 +22,9 @@ namespace classesMetierStagiaires
         /// <param name="UnCodePostal">Code Postal</param>
         /// <param name="unFongecif">Nom fongecif</param>
         /// <param name="unTypeCIF">type de CIF</param>
-        public MStagiaireCIF(Int32 unNumosia, String unNom, String unPrenom, String uneRue, String uneVille, String UnCodePostal,
+        public MStagiaireCIF(Int32 unNumosia, String unNom, String unPrenom, String uneRue, String uneVille, String UnCodePostal,int nbreNotesStagiaire, double pointsNotesStagiaire,
             String unFongecif, String unTypeCIF)
-            : base(unNumosia,  unNom,  unPrenom,  uneRue,  uneVille,  UnCodePostal)
+            : base(unNumosia,  unNom,  unPrenom,  uneRue,  uneVille,  UnCodePostal, nbreNotesStagiaire, pointsNotesStagiaire)
         {
             this.FongecifStagiaire = unFongecif;
             this.TypeCifStagiaire = unTypeCIF;

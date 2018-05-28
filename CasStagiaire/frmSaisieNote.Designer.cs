@@ -91,6 +91,7 @@
             this.Controls.Add(this.label1);
             this.Name = "frmSaisieNote";
             this.Text = "Saisie de note - ";
+            this.Load += new System.EventHandler(this.frmSaisieNote_Load);
             ((System.ComponentModel.ISupportInitialize)(this.nudNote)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();

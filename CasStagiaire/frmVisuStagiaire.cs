@@ -5,6 +5,7 @@ using System.Data;
 using System.Drawing;
 using System.Text;
 using System.Windows.Forms;
+using CasStagiaire;
 
 namespace classesMetierStagiaires
 {
@@ -86,6 +87,9 @@ namespace classesMetierStagiaires
                 MessageBox.Show("Erreur : \n" + ex.Message, "Modification de stagiaire");
 
             }
+
+            DBConnect.conn.UpdateStagiaire(leStagiaire);
+
         }
 
 

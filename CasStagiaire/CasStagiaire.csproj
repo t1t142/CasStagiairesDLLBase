@@ -67,6 +67,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="DBConnect.cs" />
     <Compile Include="Donnees.cs" />
     <Compile Include="frmAjoutStagiaire.cs">
       <SubType>Form</SubType>

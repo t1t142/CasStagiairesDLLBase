@@ -175,7 +175,10 @@ namespace classesMetierStagiaires
 
         }
 
+        private void frmExo9_Load(object sender, EventArgs e)
+        {
 
+        }
     }
     
 }

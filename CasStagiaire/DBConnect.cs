@@ -84,7 +84,7 @@ namespace CasStagiaire
             string query = "SELECT * FROM mstagiaire";
             laSection.SupprimerStagiaires();
 
-          
+
             //Open connection
             if (this.OpenConnection() == true)
             {
@@ -101,7 +101,7 @@ namespace CasStagiaire
                     if (dataReader["type"].ToString() == "DE")
                     {
                         // instancier un stagiaire spécialisé DE et lui affecter toutes ses propriétés
-                       if (dataReader["remu_afpa"].ToString() == "1")
+                        if (dataReader["remu_afpa"].ToString() == "1")
                         {
                             afpa = true;
                         }
@@ -114,7 +114,7 @@ namespace CasStagiaire
                                  dataReader["rue"].ToString(),
                                  dataReader["ville"].ToString(),
                                  dataReader["codepostal"].ToString(),
-                                int.Parse(  dataReader["nbrenotes"].ToString()),
+                                int.Parse(dataReader["nbrenotes"].ToString()),
                                 double.Parse(dataReader["pointsnotes"].ToString()),
                                  afpa);
 
@@ -126,7 +126,7 @@ namespace CasStagiaire
                     if (dataReader["type"].ToString() == "CIF")
                     {
                         // instancier un stagiaire spécialisé DE et lui affecter toutes ses propriétés
-                       
+
 
                         nouveauStagiaire = new MStagiaireCIF(
                                int.Parse(dataReader["numosia"].ToString()),
@@ -147,18 +147,18 @@ namespace CasStagiaire
                     }
 
                 }
-            
 
-            //close Data Reader
-            dataReader.Close();
+
+                //close Data Reader
+                dataReader.Close();
 
                 //close Connection
                 this.CloseConnection();
 
                 //return list to be displayed
-              
+
             }
-           
+
         }
         //Insert statement
         public void InsertStagiaireCif(MStagiaireCIF st)
@@ -215,24 +215,35 @@ namespace CasStagiaire
             //open connection
             if (this.OpenConnection() == true)
             {
-                //create command and assign the query and connection from the constructor
-                MySqlCommand cmd = new MySqlCommand(query, connection);
+                try
+                {
+                    //create command and assign the query and connection from the constructor
+                    MySqlCommand cmd = new MySqlCommand(query, connection);
 
-                //Execute command
-                cmd.Parameters.AddWithValue("@Nom", st.NomStagiaire);
-                cmd.Parameters.AddWithValue("@Prenom", st.PrenomStagiaire);
-                cmd.Parameters.AddWithValue("@NumOsia", st.NumOsiaStagiaire);
-                cmd.Parameters.AddWithValue("@Rue", st.RueStagiaire);
-                cmd.Parameters.AddWithValue("@CodePostal", st.CodePostalStagiaire);
-                cmd.Parameters.AddWithValue("@Ville", st.VilleStagiaire);
-                cmd.Parameters.AddWithValue("@PointsNotes", st.PointsNotes);
-                cmd.Parameters.AddWithValue("@NbreNotes", st.NbreNotes);
-                cmd.Parameters.AddWithValue("@Type", type);
-                cmd.Parameters.AddWithValue("@Remuafpa", remuafpa);
-                cmd.ExecuteNonQuery();
+                    //Execute command
+                    cmd.Parameters.AddWithValue("@Nom", st.NomStagiaire);
+                    cmd.Parameters.AddWithValue("@Prenom", st.PrenomStagiaire);
+                    cmd.Parameters.AddWithValue("@NumOsia", st.NumOsiaStagiaire);
+                    cmd.Parameters.AddWithValue("@Rue", st.RueStagiaire);
+                    cmd.Parameters.AddWithValue("@CodePostal", st.CodePostalStagiaire);
+                    cmd.Parameters.AddWithValue("@Ville", st.VilleStagiaire);
+                    cmd.Parameters.AddWithValue("@PointsNotes", st.PointsNotes);
+                    cmd.Parameters.AddWithValue("@NbreNotes", st.NbreNotes);
+                    cmd.Parameters.AddWithValue("@Type", type);
+                    cmd.Parameters.AddWithValue("@Remuafpa", remuafpa);
+                    cmd.ExecuteNonQuery();
+                }
+                catch(MySqlException ex)
+                {
+                    MessageBox.Show(ex.Message);
 
+                }
                 //close connection
-                this.CloseConnection();
+                finally
+                {
+                    this.CloseConnection();
+                }
+                
             }
             else
             {
@@ -242,9 +253,9 @@ namespace CasStagiaire
 
 
         //Update statement
-        public void UpdateEleve()
+        public void UpdateStagiaire(MStagiaire st)
         {
-            string query = "UPDATE eleve SET name='Joe', age='22' WHERE id='John Smith'";
+            string query = "UPDATE mstagiaire SET nom=@Nom, prenom=@Prenom,rue= @Rue,codepostal= @CodePostal,ville= @Ville,pointsnotes=@pointnotes,nbrenotes=@nombrenotes WHERE numosia= @NumOsia";
 
             //Open connection
             if (this.OpenConnection() == true)
@@ -253,6 +264,14 @@ namespace CasStagiaire
                 MySqlCommand cmd = new MySqlCommand();
                 //Assign the query using CommandText
                 cmd.CommandText = query;
+                cmd.Parameters.AddWithValue("@Nom", st.NomStagiaire);
+                cmd.Parameters.AddWithValue("@Prenom", st.PrenomStagiaire);
+                cmd.Parameters.AddWithValue("@NumOsia", st.NumOsiaStagiaire);
+                cmd.Parameters.AddWithValue("@Rue", st.RueStagiaire);
+                cmd.Parameters.AddWithValue("@CodePostal", st.CodePostalStagiaire);
+                cmd.Parameters.AddWithValue("@Ville", st.VilleStagiaire);
+                cmd.Parameters.AddWithValue("@pointnotes", st.PointsNotes);
+                cmd.Parameters.AddWithValue("@nombrenotes", st.NbreNotes);
                 //Assign the connection using Connection
                 cmd.Connection = connection;
 
@@ -277,122 +296,8 @@ namespace CasStagiaire
             }
         }
 
-        //Select statement
-        public DataSet SelectEleve()
-        {
-            string query = "SELECT * FROM eleve";
+       public static DBConnect conn = new DBConnect();
 
-
-
-            DataSet ds = new DataSet(); ;
-            //Open connection
-            if (this.OpenConnection() == true)
-            {
-                //Create Command
-                MySqlCommand cmd = new MySqlCommand(query, connection);
-                MySqlDataAdapter adap = new MySqlDataAdapter(cmd);
-                ds = new DataSet();
-                adap.Fill(ds);
-
-
-
-                //close Connection
-                this.CloseConnection();
-
-                //return list to be displayed
-                return ds;
-            }
-            return ds;
-        }
-        public DataSet SelectCours(int id)
-        {
-            string query = "SELECT * FROM cours  WHERE id=" + id;
-
-
-
-            DataSet ds = new DataSet(); ;
-            //Open connection
-            if (this.OpenConnection() == true)
-            {
-                //Create Command
-                MySqlCommand cmd = new MySqlCommand(query, connection);
-                MySqlDataAdapter adap = new MySqlDataAdapter(cmd);
-                ds = new DataSet();
-                adap.Fill(ds);
-
-
-
-                //close Connection
-                this.CloseConnection();
-
-                //return list to be displayed
-                return ds;
-            }
-            return ds;
-        }
-        public DataSet RechercheEleve(String nom)
-        {
-            string query = "SELECT * FROM eleve WHERE nom LIKE '%" + nom + "%'";
-
-
-
-            DataSet ds = new DataSet();
-            //Open connection
-            if (this.OpenConnection() == true)
-            {
-                //Create Command
-                MySqlCommand cmd = new MySqlCommand(query, connection);
-                MySqlDataAdapter adap = new MySqlDataAdapter(cmd);
-                ds = new DataSet();
-                adap.Fill(ds);
-
-
-
-                //close Connection
-                this.CloseConnection();
-
-                //return list to be displayed
-                return ds;
-            }
-            return ds;
-        }
-        //Count statement
-        public int Count()
-        {
-            string query = "SELECT Count(*) FROM tableinfo";
-            int Count = -1;
-
-            //Open Connection
-            if (this.OpenConnection() == true)
-            {
-                //Create Mysql Command
-                MySqlCommand cmd = new MySqlCommand(query, connection);
-
-                //ExecuteScalar will return one value
-                Count = int.Parse(cmd.ExecuteScalar() + "");
-
-                //close Connection
-                this.CloseConnection();
-
-                return Count;
-            }
-            else
-            {
-                return Count;
-            }
-        }
-
-        //Backup
-        public void Backup()
-        {
-        }
-
-        //Restore
-        public void Restore()
-        {
-        }
-        public static DBConnect conn = new DBConnect();
 
     }
-
 }

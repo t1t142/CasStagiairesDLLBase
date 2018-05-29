@@ -30,14 +30,14 @@
         {
             this.texboxidSec = new System.Windows.Forms.TextBox();
             this.groupBoxSection = new System.Windows.Forms.GroupBox();
-            this.lblidSec = new System.Windows.Forms.Label();
             this.lblnomSec = new System.Windows.Forms.Label();
             this.textBoxSec = new System.Windows.Forms.TextBox();
+            this.lblidSec = new System.Windows.Forms.Label();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
-            this.lbldatedebutSec = new System.Windows.Forms.Label();
-            this.lblDateFin = new System.Windows.Forms.Label();
-            this.dateTimePickerFin = new System.Windows.Forms.DateTimePicker();
             this.dateTimePickerDebut = new System.Windows.Forms.DateTimePicker();
+            this.dateTimePickerFin = new System.Windows.Forms.DateTimePicker();
+            this.lblDateFin = new System.Windows.Forms.Label();
+            this.lbldatedebutSec = new System.Windows.Forms.Label();
             this.btnAjout = new System.Windows.Forms.Button();
             this.groupBoxSection.SuspendLayout();
             this.groupBox1.SuspendLayout();
@@ -63,6 +63,22 @@
             this.groupBoxSection.TabStop = false;
             this.groupBoxSection.Text = "Ajout Listes sections";
             // 
+            // lblnomSec
+            // 
+            this.lblnomSec.AutoSize = true;
+            this.lblnomSec.Location = new System.Drawing.Point(17, 60);
+            this.lblnomSec.Name = "lblnomSec";
+            this.lblnomSec.Size = new System.Drawing.Size(74, 13);
+            this.lblnomSec.TabIndex = 4;
+            this.lblnomSec.Text = "Nom Section :";
+            // 
+            // textBoxSec
+            // 
+            this.textBoxSec.Location = new System.Drawing.Point(111, 57);
+            this.textBoxSec.Name = "textBoxSec";
+            this.textBoxSec.Size = new System.Drawing.Size(231, 20);
+            this.textBoxSec.TabIndex = 3;
+            // 
             // lblidSec
             // 
             this.lblidSec.AutoSize = true;
@@ -71,22 +87,6 @@
             this.lblidSec.Size = new System.Drawing.Size(58, 13);
             this.lblidSec.TabIndex = 2;
             this.lblidSec.Text = "IdSection :";
-            // 
-            // lblnomSec
-            // 
-            this.lblnomSec.AutoSize = true;
-            this.lblnomSec.Location = new System.Drawing.Point(17, 60);
-            this.lblnomSec.Name = "lblnomSec";
-            this.lblnomSec.Size = new System.Drawing.Size(77, 13);
-            this.lblnomSec.TabIndex = 4;
-            this.lblnomSec.Text = "Nom Serction :";
-            // 
-            // textBoxSec
-            // 
-            this.textBoxSec.Location = new System.Drawing.Point(111, 57);
-            this.textBoxSec.Name = "textBoxSec";
-            this.textBoxSec.Size = new System.Drawing.Size(231, 20);
-            this.textBoxSec.TabIndex = 3;
             // 
             // groupBox1
             // 
@@ -101,14 +101,19 @@
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "Date";
             // 
-            // lbldatedebutSec
+            // dateTimePickerDebut
             // 
-            this.lbldatedebutSec.AutoSize = true;
-            this.lbldatedebutSec.Location = new System.Drawing.Point(17, 44);
-            this.lbldatedebutSec.Name = "lbldatedebutSec";
-            this.lbldatedebutSec.Size = new System.Drawing.Size(42, 13);
-            this.lbldatedebutSec.TabIndex = 3;
-            this.lbldatedebutSec.Text = "Debut :";
+            this.dateTimePickerDebut.Location = new System.Drawing.Point(54, 44);
+            this.dateTimePickerDebut.Name = "dateTimePickerDebut";
+            this.dateTimePickerDebut.Size = new System.Drawing.Size(163, 20);
+            this.dateTimePickerDebut.TabIndex = 6;
+            // 
+            // dateTimePickerFin
+            // 
+            this.dateTimePickerFin.Location = new System.Drawing.Point(269, 45);
+            this.dateTimePickerFin.Name = "dateTimePickerFin";
+            this.dateTimePickerFin.Size = new System.Drawing.Size(150, 20);
+            this.dateTimePickerFin.TabIndex = 5;
             // 
             // lblDateFin
             // 
@@ -119,19 +124,14 @@
             this.lblDateFin.TabIndex = 4;
             this.lblDateFin.Text = "Fin :";
             // 
-            // dateTimePickerFin
+            // lbldatedebutSec
             // 
-            this.dateTimePickerFin.Location = new System.Drawing.Point(269, 45);
-            this.dateTimePickerFin.Name = "dateTimePickerFin";
-            this.dateTimePickerFin.Size = new System.Drawing.Size(150, 20);
-            this.dateTimePickerFin.TabIndex = 5;
-            // 
-            // dateTimePickerDebut
-            // 
-            this.dateTimePickerDebut.Location = new System.Drawing.Point(54, 44);
-            this.dateTimePickerDebut.Name = "dateTimePickerDebut";
-            this.dateTimePickerDebut.Size = new System.Drawing.Size(163, 20);
-            this.dateTimePickerDebut.TabIndex = 6;
+            this.lbldatedebutSec.AutoSize = true;
+            this.lbldatedebutSec.Location = new System.Drawing.Point(17, 44);
+            this.lbldatedebutSec.Name = "lbldatedebutSec";
+            this.lbldatedebutSec.Size = new System.Drawing.Size(42, 13);
+            this.lbldatedebutSec.TabIndex = 3;
+            this.lbldatedebutSec.Text = "Debut :";
             // 
             // btnAjout
             // 

@@ -67,6 +67,12 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Donnees.cs" />
+    <Compile Include="frmAjoutSection.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmAjoutSection.Designer.cs">
+      <DependentUpon>frmAjoutSection.cs</DependentUpon>
+    </Compile>
     <Compile Include="frmAjoutStagiaire.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -112,6 +118,9 @@
     <Compile Include="Outils.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <EmbeddedResource Include="frmAjoutSection.resx">
+      <DependentUpon>frmAjoutSection.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="frmAjoutStagiaire.resx">
       <DependentUpon>frmAjoutStagiaire.cs</DependentUpon>
       <SubType>Designer</SubType>
@@ -119,6 +128,9 @@
     <EmbeddedResource Include="frmExo9.resx">
       <DependentUpon>frmExo9.cs</DependentUpon>
       <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frmListeSection.resx">
+      <DependentUpon>frmListeSection.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="frmMDI.resx">
       <DependentUpon>frmMDI.cs</DependentUpon>

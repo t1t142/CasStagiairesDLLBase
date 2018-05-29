@@ -16,5 +16,10 @@ namespace CasStagiaire
         {
             InitializeComponent();
         }
+
+        private void FrmSection_Load(object sender, EventArgs e)
+        {
+
+        }
     }
 }

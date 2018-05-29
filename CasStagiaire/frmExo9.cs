@@ -3,7 +3,7 @@ using System.Data;
 using System.Drawing;
 using System.Text;
 using System.Windows.Forms;
-using CasStagiaire;
+//using CasStagiaire;
 
 
 
@@ -57,7 +57,7 @@ namespace classesMetierStagiaires
             
             // ajoute le stagiaire instancié à la collection de la section CDI1
            // this.laSection.Ajouter(unStagiaire);
-            DBConnect.conn.SelectStagiaire(laSection);
+            MSection.SelectStagiaire(laSection);
 
         }
 
@@ -67,7 +67,7 @@ namespace classesMetierStagiaires
         /// </summary>
         private void afficheStagiaires()
         {
-            DBConnect.conn.SelectStagiaire(laSection);
+            MSection.SelectStagiaire(laSection);
 
             // déterminer l'origine des données à afficher : 
             // appel de la méthode de la classe MSection 
@@ -144,32 +144,36 @@ namespace classesMetierStagiaires
         /// </summary>
         /// <param name="sender"></param>
         /// <param name="e"></param>
-        private void btnSupprimer_Click(object sender, EventArgs e)
+        
+        
+       private void btnSupprimer_Click(object sender, EventArgs e)
         {
-            // si un stagiaire est pointé dans la datagridview
-            if (this.grdStagiaires.CurrentRow != null)
-            {
-                // récupérer la clé du stagiaire pointé
-                Int32 cleStagiaire;
-                cleStagiaire = (Int32)this.grdStagiaires.CurrentRow.Cells[0].Value;
-                // demander confirmation de la suppression
-                // NB: messagebox retourne une valeur exploitable !
-                if (MessageBox.Show("Voulez-vous supprimer le stagiaire numéro :" + cleStagiaire.ToString(), "Suppression", MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.Yes)
-
+                // si un stagiaire est pointé dans la datagridview
+                if (this.grdStagiaires.CurrentRow != null)
                 {
-                    // supprimer et compacter la collection
-                    this.laSection.Supprimer(cleStagiaire);
+                    // récupérer la clé du stagiaire pointé
+                    Int32 cleStagiaire;
+                    cleStagiaire = (Int32)this.grdStagiaires.CurrentRow.Cells[0].Value;
+                    // demander confirmation de la suppression
+                    // NB: messagebox retourne une valeur exploitable !
+                    if (MessageBox.Show("Voulez-vous supprimer le stagiaire numéro :" + cleStagiaire.ToString(), "Suppression", MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.Yes)
 
-                    // ******* ajouter l'impact en BDD ********
-                    // ----------------------------------------
+                    {
+                        /*
+                        // supprimer et compacter la collection
+                        this.laSection.Supprimer(cleStagiaire);
 
+                        // *** ajouter l'impact en BDD **
+                        // ----------------------------------------
+                        */
+                        //modification effectuer par moussa
+                        MSection.DeleteStagiaire(cleStagiaire);
 
-                    // réafficher la datagridview
-                    afficheStagiaires();
+                        // réafficher la datagridview
+                        afficheStagiaires();
+                    }
                 }
             }
-
-        }
 
         /// <summary>
         /// gestion bouton supprimer

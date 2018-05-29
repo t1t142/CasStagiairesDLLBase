@@ -124,5 +124,10 @@ namespace classesMetierStagiaires
             leForm.MdiParent = this;
             leForm.Show();
         }
+
+        private void openToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+
+        }
     }
 }

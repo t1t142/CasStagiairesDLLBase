@@ -10,21 +10,11 @@ using System.Windows.Forms;
 
 namespace CasStagiaire
 {
-    public partial class frmListeSection : Form
+    public partial class FrmSection : Form
     {
-        public frmListeSection()
+        public FrmSection()
         {
             InitializeComponent();
-        }
-
-        private void btnouvrir_Click(object sender, EventArgs e)
-        {
-
-        }
-
-        private void frmListeSection_Load(object sender, EventArgs e)
-        {
-
         }
     }
 }

@@ -24,16 +24,19 @@
   <Class Name="classesMetierStagiaires.MSection">
     <Position X="7.75" Y="1.25" Width="1.5" />
     <TypeIdentifier>
-      <HashCode>AAAAQABAAgAAgkAAAAAAgAFAAMQAAAgAAIQAAABAAEA=</HashCode>
+      <HashCode>AAAAQAFAAgAAgkAAAIAAgAFABMQAAAgAAIQAAABABEA=</HashCode>
       <FileName>MSection.cs</FileName>
     </TypeIdentifier>
   </Class>
   <Class Name="classesMetierStagiaires.MSections">
-    <Position X="11.5" Y="2.5" Width="1.5" />
+    <Position X="11" Y="1.75" Width="1.5" />
     <TypeIdentifier>
-      <HashCode>AgAAAABAAAAAgEAAAAAAAAQAAAAAAAAAAAAAACAAAgA=</HashCode>
+      <HashCode>AgAAACBAAAAAgEAEAAAAAAQAAAAAAAAAAAAAACAAAgA=</HashCode>
       <FileName>MSections.cs</FileName>
     </TypeIdentifier>
+    <ShowAsCollectionAssociation>
+      <Field Name="lesSections" />
+    </ShowAsCollectionAssociation>
   </Class>
   <Font Name="Segoe UI" Size="9" />
 </ClassDiagram>

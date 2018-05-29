@@ -1,4 +1,4 @@
-using CasStagiaire;
+//using CasStagiaire;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -37,7 +37,7 @@ namespace classesMetierStagiaires
             // appel méthode prise en compte note
             this.leStagiaire.RecevoirNote((float)(this.nudNote.Value));
 
-            DBConnect.conn.UpdateStagiaire(leStagiaire);
+            MSection.UpdateStagiaire(leStagiaire);
             this.DialogResult = DialogResult.OK;
 
         }

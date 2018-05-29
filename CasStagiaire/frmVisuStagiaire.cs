@@ -5,7 +5,7 @@ using System.Data;
 using System.Drawing;
 using System.Text;
 using System.Windows.Forms;
-using CasStagiaire;
+//using CasStagiaire;
 
 namespace classesMetierStagiaires
 {
@@ -88,7 +88,7 @@ namespace classesMetierStagiaires
 
             }
 
-            DBConnect.conn.UpdateStagiaire(leStagiaire);
+            MSection.UpdateStagiaire(leStagiaire);
 
         }
 

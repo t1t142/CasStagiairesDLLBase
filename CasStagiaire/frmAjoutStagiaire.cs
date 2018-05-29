@@ -5,7 +5,7 @@ using System.Data;
 using System.Drawing;
 using System.Text;
 using System.Windows.Forms;
-using CasStagiaire;
+//using CasStagiaire;
 
 namespace classesMetierStagiaires
 {
@@ -85,7 +85,7 @@ namespace classesMetierStagiaires
                         0,
                         this.chkRemuAfpa.Checked);
                     
-                    DBConnect.conn.InsertStagiaireDE(st);
+                    MSection.InsertStagiaireDE(st);
                    // this.laSection.Ajouter(st);
 
                 }
@@ -119,7 +119,7 @@ namespace classesMetierStagiaires
 
                         this.txtFongecif.Text,
                         leTypeCIF);
-                    DBConnect.conn.InsertStagiaireCif(nouveauStagiaireCif);
+                    MSection.InsertStagiaireCif(nouveauStagiaireCif);
                 }
 
                 // dans tous les cas, ajouter la référence d'objet MStagiaire dans la collection de sa section

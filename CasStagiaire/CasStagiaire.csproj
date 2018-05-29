@@ -79,6 +79,12 @@
     <Compile Include="frmExo9.designer.cs">
       <DependentUpon>frmExo9.cs</DependentUpon>
     </Compile>
+    <Compile Include="frmListeSection.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmListeSection.Designer.cs">
+      <DependentUpon>frmListeSection.cs</DependentUpon>
+    </Compile>
     <Compile Include="frmMDI.cs">
       <SubType>Form</SubType>
     </Compile>

@@ -71,9 +71,7 @@ namespace CasStagiaire
 
         }
 
-        private void frmListeSection_Load_1(object sender, EventArgs e)
-        {
-
-        }
+      
     }
 }
+ 

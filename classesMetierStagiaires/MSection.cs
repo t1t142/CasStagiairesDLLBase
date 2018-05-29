@@ -122,6 +122,28 @@ namespace classesMetierStagiaires
 
         }
 
+        public MSection(String leCode, String leNom, DateTime ddebut, DateTime dfin)
+        {
+            // initialise code et nom de la section
+            this.leCodeSection = leCode;
+            this.NomSection = leNom;
+            this.debutFormation = ddebut;
+            this.finFormation = dfin;
+
+            // instancie un dictionnaire vide pour les stagiaires de cette section
+            lesStagiaires = new SortedDictionary<int, MStagiaire>();
+            // datatable : pour y copier les données stagiaires
+            // et à fournir aux composants de présentation 
+            dtStagiaires = new DataTable();
+
+            // ajout à la datatable de 3 colonnes personnalisées 
+            this.dtStagiaires.Columns.Add(new DataColumn("Numéro OSIA", typeof(System.Int32)));
+            this.dtStagiaires.Columns.Add(new DataColumn("Nom", typeof(System.String)));
+            this.dtStagiaires.Columns.Add(new DataColumn("Prénom", typeof(System.String)));
+
+
+        }
+
         /// <summary>
         /// ajouter un stagiaire à la collection
         /// (reçoit la ref au stagiaire et en déduit la clé (= numOsia) pour la collection)

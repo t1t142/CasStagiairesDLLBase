@@ -101,7 +101,7 @@
             this.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.Name = "frmListeSection";
             this.Text = "frmListeSection";
-            this.Load += new System.EventHandler(this.frmListeSection_Load_1);
+//            this.Load += new System.EventHandler(this.frmListeSection_Load_1);
             ((System.ComponentModel.ISupportInitialize)(this.grdSection)).EndInit();
             this.ResumeLayout(false);
 

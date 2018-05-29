@@ -2,6 +2,7 @@ using System;
 using System.Collections.Generic;
 using System.Text;
 using System.Data; // ajouté manuellement
+using MySql.Data.MySqlClient;
 
 namespace classesMetierStagiaires
 {
@@ -138,5 +139,193 @@ namespace classesMetierStagiaires
             return this.dtSections;
         }
 
+
+        //-------------------Test ajout nouvelles classes
+        public static void SelectSection(MSections sections)
+        {
+            string query = "SELECT * FROM msections";
+            sections.SupprimerSections();
+
+            
+
+
+            MySqlCommand cmd = DBConnect.GetConnexion().CreateCommand();
+            cmd.CommandText = query;
+
+
+            //Create a data reader and Execute the command
+            MySqlDataReader dataReader = cmd.ExecuteReader();
+
+            //Read the data and store them in the list
+            while (dataReader.Read())
+            {
+                Boolean afpa = false;
+                //MStagiaire nouveauStagiaire;
+
+                MSection nvlsection = new MSection(
+                     dataReader["code"].ToString(),
+                    dataReader["nom"].ToString());
+
+                //-----TODO@récuperation de la date de début et de fin
+                     //dataReader["debut_formation"].ToString(),
+                    //dataReader["date_fin"].ToString());
+                               
+                    // ajout de la nouvelle à la liste des sections
+             
+                    sections.Ajouter(nvlsection);
+                    nvlsection = null;
+            }
+
+            //close Data Reader
+            dataReader.Close();
+
+        }
+        /*
+        public static void InsertStagiaireCif(MStagiaireCIF st)
+        {
+            String type;
+            String typecif;
+            String fongecif;
+
+            string query = "INSERT INTO mstagiaire(`id`, `id_section`, `nom`, `prenom`, `numosia`, `rue`, `codepostal`,
+			`ville`, `pointsnotes`, `nbrenotes`, `type`, `typecif`, `fongecif`, `remu_afpa`)  VALUES(Null, @section,
+            @Nom, @Prenom, @NumOsia, @Rue, @CodePostal, @Ville, @PointsNotes, @NbreNotes, @Type, @TypeCif, @FongeCif, Null)";
+    
+            type = "CIF";
+            typecif = st.TypeCifStagiaire;
+            fongecif = st.FongecifStagiaire;
+
+
+
+            MySqlCommand cmd = DBConnect.GetConnexion().CreateCommand();
+            cmd.CommandText = query;
+            //Execute command
+            cmd.Parameters.AddWithValue("@Nom", st.NomStagiaire);
+            cmd.Parameters.AddWithValue("@Prenom", st.PrenomStagiaire);
+            cmd.Parameters.AddWithValue("@NumOsia", st.NumOsiaStagiaire);
+            cmd.Parameters.AddWithValue("@Rue", st.RueStagiaire);
+            cmd.Parameters.AddWithValue("@CodePostal", st.CodePostalStagiaire);
+            cmd.Parameters.AddWithValue("@Ville", st.VilleStagiaire);
+            cmd.Parameters.AddWithValue("@PointsNotes", st.PointsNotes);
+            cmd.Parameters.AddWithValue("@NbreNotes", st.NbreNotes);
+            cmd.Parameters.AddWithValue("@Type", type);
+            cmd.Parameters.AddWithValue("@TypeCif", typecif);
+            cmd.Parameters.AddWithValue("@FongeCif", fongecif);
+            cmd.Parameters.AddWithValue("@section", 1);
+            cmd.ExecuteNonQuery();
+
+            //close connection
+
+        }
+        public static void InsertStagiaireDE(MStagiaireDE st)
+        {
+            String type;
+            Boolean remuafpa;
+
+            string query = "INSERT INTO mstagiaire (`id`, `id_section`, `nom`, `prenom`, `numosia`,
+			`rue`, `codepostal`, `ville`, `pointsnotes`, `nbrenotes`, `type`, `typecif`, `fongecif`,
+			`remu_afpa`) VALUES(Null, @section, @Nom, @Prenom, @NumOsia, @Rue, @CodePostal, @Ville, @PointsNotes,
+            @NbreNotes, @Type, Null, Null, @RemuAfpa)";
+    
+            type = "DE";
+            remuafpa = st.RemuAfpaStagiaire;
+
+
+
+            try
+            {
+
+                //create command and assign the query and connection from the constructor
+                // MySqlCommand cmd = new MySqlCommand(query, connection);
+                MySqlCommand cmd = DBConnect.GetConnexion().CreateCommand();
+                cmd.CommandText = query;
+                //Execute command
+                //Execute command
+                cmd.Parameters.AddWithValue("@Nom", st.NomStagiaire);
+                cmd.Parameters.AddWithValue("@Prenom", st.PrenomStagiaire);
+                cmd.Parameters.AddWithValue("@NumOsia", st.NumOsiaStagiaire);
+                cmd.Parameters.AddWithValue("@Rue", st.RueStagiaire);
+                cmd.Parameters.AddWithValue("@CodePostal", st.CodePostalStagiaire);
+                cmd.Parameters.AddWithValue("@Ville", st.VilleStagiaire);
+                cmd.Parameters.AddWithValue("@PointsNotes", st.PointsNotes);
+                cmd.Parameters.AddWithValue("@NbreNotes", st.NbreNotes);
+                cmd.Parameters.AddWithValue("@Type", type);
+                cmd.Parameters.AddWithValue("@Remuafpa", remuafpa);
+                cmd.Parameters.AddWithValue("@section", 1);
+                cmd.ExecuteNonQuery();
+            }
+            catch (MySqlException ex)
+            {
+                //   MessageBox.Show(ex.Message);
+
+            }
+            //close connection
+
+
+
+        }
+
+
+        //Update statement
+        public static void UpdateStagiaire(MStagiaire st)
+        {
+            string query = "UPDATE mstagiaire SET nom=@Nom, prenom=@Prenom,rue= @Rue,
+    
+            codepostal = @CodePostal,ville = @Ville,pointsnotes = @pointnotes,nbrenotes = @nombrenotes WHERE numosia = @NumOsia";
+    
+
+
+            //create mysql command
+        MySqlCommand cmd = DBConnect.GetConnexion().CreateCommand();
+            cmd.CommandText = cmd.CommandText = query;
+
+
+            cmd.Parameters.AddWithValue("@Nom", st.NomStagiaire);
+            cmd.Parameters.AddWithValue("@Prenom", st.PrenomStagiaire);
+            cmd.Parameters.AddWithValue("@NumOsia", st.NumOsiaStagiaire);
+            cmd.Parameters.AddWithValue("@Rue", st.RueStagiaire);
+            cmd.Parameters.AddWithValue("@CodePostal", st.CodePostalStagiaire);
+            cmd.Parameters.AddWithValue("@Ville", st.VilleStagiaire);
+            cmd.Parameters.AddWithValue("@pointnotes", st.PointsNotes);
+            cmd.Parameters.AddWithValue("@nombrenotes", st.NbreNotes);
+            //Assign the connection using Connection
+
+
+            //Execute query
+            cmd.ExecuteNonQuery();
+
+
+
+        }
+
+        //Delete statement
+        public static void DeleteStagiaire(int id)
+        {
+            string query = "DELETE FROM mstagiaire WHERE numosia=@Numosia";
+
+
+            MySqlCommand cmd = DBConnect.GetConnexion().CreateCommand();
+            cmd.CommandText = query;
+
+            cmd.Parameters.AddWithValue("@Numosia", id);
+            cmd.ExecuteNonQuery();
+
+
+        }
+        */
+
+        /// <summary>
+        /// supprime toutes les sections
+        /// </summary>
+        public void SupprimerSections()
+        {
+            lesSections.Clear();
+        }
+        
+
+
     }
+    
 }
+
+

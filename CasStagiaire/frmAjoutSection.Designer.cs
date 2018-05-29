@@ -152,6 +152,7 @@
             this.Controls.Add(this.groupBoxSection);
             this.Name = "frmAjoutSection";
             this.Text = "frmAjoutSection";
+            this.Load += new System.EventHandler(this.frmAjoutSection_Load);
             this.groupBoxSection.ResumeLayout(false);
             this.groupBoxSection.PerformLayout();
             this.groupBox1.ResumeLayout(false);

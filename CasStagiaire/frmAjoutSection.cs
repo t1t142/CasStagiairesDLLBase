@@ -21,5 +21,10 @@ namespace CasStagiaire
         {
 
         }
+
+        private void frmAjoutSection_Load(object sender, EventArgs e)
+        {
+
+        }
     }
 }

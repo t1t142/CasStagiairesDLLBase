@@ -68,9 +68,9 @@
             this.lblnomSec.AutoSize = true;
             this.lblnomSec.Location = new System.Drawing.Point(17, 60);
             this.lblnomSec.Name = "lblnomSec";
-            this.lblnomSec.Size = new System.Drawing.Size(77, 13);
+            this.lblnomSec.Size = new System.Drawing.Size(74, 13);
             this.lblnomSec.TabIndex = 4;
-            this.lblnomSec.Text = "Nom Serction :";
+            this.lblnomSec.Text = "Nom Section :";
             // 
             // textBoxSec
             // 

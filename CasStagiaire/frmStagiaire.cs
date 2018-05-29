@@ -14,5 +14,10 @@ namespace classesMetierStagiaires
         {
             InitializeComponent();
         }
+
+        private void frmStagiaire_Load(object sender, EventArgs e)
+        {
+
+        }
     }
 }

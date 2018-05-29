@@ -24,12 +24,9 @@
   <Class Name="classesMetierStagiaires.MSection">
     <Position X="7.75" Y="1.25" Width="1.5" />
     <TypeIdentifier>
-      <HashCode>AAAAQABAAgAAgkAAAAAAgAFAAMQAAAAAAIAAAABAAEA=</HashCode>
+      <HashCode>AAAAQABAAgAAgkAAAAAAgAFAAMQAAAgAAIQAAABAAEA=</HashCode>
       <FileName>MSection.cs</FileName>
     </TypeIdentifier>
-    <ShowAsCollectionAssociation>
-      <Field Name="lesStagiaires" />
-    </ShowAsCollectionAssociation>
   </Class>
   <Class Name="classesMetierStagiaires.MSections">
     <Position X="11.5" Y="2.5" Width="1.5" />

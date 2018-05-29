@@ -169,6 +169,7 @@
             this.Controls.Add(this.grpStagiaire);
             this.Name = "frmStagiaire";
             this.Text = "Classe virtuelle parente stagiaire";
+            this.Load += new System.EventHandler(this.frmStagiaire_Load);
             this.grpStagiaire.ResumeLayout(false);
             this.grpStagiaire.PerformLayout();
             this.ResumeLayout(false);

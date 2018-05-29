@@ -430,8 +430,6 @@ namespace classesMetierStagiaires
             MySqlCommand cmd = DBConnect.GetConnexion().CreateCommand();
             cmd.CommandText = query;
 
-
-            ;
             cmd.Parameters.AddWithValue("@Numosia", id);
             cmd.ExecuteNonQuery();
 

@@ -5,7 +5,7 @@ using System.Data;
 using System.Drawing;
 using System.Text;
 using System.Windows.Forms;
-
+using CasStagiaire;
 namespace classesMetierStagiaires
 {
     public partial class frmMDI : Form
@@ -21,6 +21,9 @@ namespace classesMetierStagiaires
 
         private void ShowNewForm(object sender, EventArgs e)
         {
+            frmListeSection listeSection = new frmListeSection();
+            listeSection.MdiParent = this;
+            listeSection.Show();
             //// Créez une nouvelle instance du formulaire enfant.
             //Form childForm = new Form();
             //// Configurez-la en tant qu'enfant de ce formulaire MDI avant de l'afficher.

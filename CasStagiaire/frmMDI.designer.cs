@@ -177,6 +177,7 @@
             this.openSectionToolStripMenuItem.Name = "openSectionToolStripMenuItem";
             this.openSectionToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
             this.openSectionToolStripMenuItem.Text = "Section";
+            this.openSectionToolStripMenuItem.Click += new System.EventHandler(this.ShowNewForm);
             // 
             // OpenCDIToolStripMenuItem
             // 

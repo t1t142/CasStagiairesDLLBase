@@ -31,9 +31,9 @@
             this.btnAjoutSec = new System.Windows.Forms.Button();
             this.btnSupSec = new System.Windows.Forms.Button();
             this.btnModifierSec = new System.Windows.Forms.Button();
-            this.dataGridView1 = new System.Windows.Forms.DataGridView();
+            this.grdSection = new System.Windows.Forms.DataGridView();
             this.btnouvrir = new System.Windows.Forms.Button();
-            ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.grdSection)).BeginInit();
             this.SuspendLayout();
             // 
             // btnAjoutSec
@@ -63,16 +63,17 @@
             this.btnModifierSec.Text = "Modifier";
             this.btnModifierSec.UseVisualStyleBackColor = true;
             // 
-            // dataGridView1
+            // grdSection
             // 
-            this.dataGridView1.AllowUserToAddRows = false;
-            this.dataGridView1.AllowUserToDeleteRows = false;
-            this.dataGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dataGridView1.Location = new System.Drawing.Point(148, 126);
-            this.dataGridView1.Name = "dataGridView1";
-            this.dataGridView1.ReadOnly = true;
-            this.dataGridView1.Size = new System.Drawing.Size(484, 150);
-            this.dataGridView1.TabIndex = 3;
+            this.grdSection.AllowUserToAddRows = false;
+            this.grdSection.AllowUserToDeleteRows = false;
+            this.grdSection.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.grdSection.Location = new System.Drawing.Point(148, 126);
+            this.grdSection.Name = "grdSection";
+            this.grdSection.ReadOnly = true;
+            this.grdSection.Size = new System.Drawing.Size(484, 150);
+            this.grdSection.TabIndex = 3;
+            this.grdSection.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridView1_CellContentClick);
             // 
             // btnouvrir
             // 
@@ -89,13 +90,14 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(879, 450);
             this.Controls.Add(this.btnouvrir);
-            this.Controls.Add(this.dataGridView1);
+            this.Controls.Add(this.grdSection);
             this.Controls.Add(this.btnModifierSec);
             this.Controls.Add(this.btnSupSec);
             this.Controls.Add(this.btnAjoutSec);
             this.Name = "frmListeSection";
             this.Text = "frmListeSection";
-            ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).EndInit();
+            this.Load += new System.EventHandler(this.frmListeSection_Load_1);
+            ((System.ComponentModel.ISupportInitialize)(this.grdSection)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -105,7 +107,7 @@
         private System.Windows.Forms.Button btnAjoutSec;
         private System.Windows.Forms.Button btnSupSec;
         private System.Windows.Forms.Button btnModifierSec;
-        private System.Windows.Forms.DataGridView dataGridView1;
+        private System.Windows.Forms.DataGridView grdSection;
         private System.Windows.Forms.Button btnouvrir;
     }
 }

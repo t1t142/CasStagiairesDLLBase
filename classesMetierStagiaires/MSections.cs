@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Text;
 using System.Data; // ajouté manuellement
 using MySql.Data.MySqlClient;
+using System.Globalization;
 
 namespace classesMetierStagiaires
 {
@@ -133,6 +134,9 @@ namespace classesMetierStagiaires
                 dr[0] = uneSection.CodeSection;
                 // affecter l'autre colonne des valeurs de prop. de l'objet MSection
                 dr[1] = uneSection.NomSection;
+                dr[2] = uneSection.DebutFormation;
+                dr[3] = uneSection.FinFormation;
+
                 // ajouter la ligne à la datatable
                 this.dtSections.Rows.Add(dr);
             } // fin boucle remplissage datatable
@@ -159,19 +163,35 @@ namespace classesMetierStagiaires
             {
                 Boolean afpa = false;
                 //MStagiaire nouveauStagiaire;
+                Console.WriteLine(dataReader["debut_formation"].ToString());
+                Console.Read();
 
-                MSection nvlsection = new MSection(
-                     dataReader["code"].ToString(),
+                if (dataReader["debut_formation"].ToString() != "")
+                {
+
+                    MSection nvlsection = new MSection(
+                    dataReader["code"].ToString(),
                     dataReader["nom"].ToString(),
-                
-                     DateTime.Parse(dataReader["debut_formation"].ToString()),
- 
-                DateTime.ParseExact(dataReader["date_fin"].ToString()),
+                    DateTime.ParseExact(dataReader["debut_formation"].ToString(), "dd/MM/yyyy hh:mm:ss", CultureInfo.InvariantCulture),
+                    DateTime.ParseExact(dataReader["date_fin"].ToString(), "dd/MM/yyyy hh:mm:ss", CultureInfo.InvariantCulture),
+                    int.Parse(dataReader["id_section"].ToString()));
 
                     // ajout de la nouvelle à la liste des sections
 
-                sections.Ajouter(nvlsection);
+                    sections.Ajouter(nvlsection);
                     nvlsection = null;
+                }
+                else
+                {
+                    MSection nvlsection = new MSection(
+                    dataReader["code"].ToString(),
+                    dataReader["nom"].ToString(),
+                    int.Parse(dataReader["id_section"].ToString()));
+                    // ajout de la nouvelle à la liste des sections
+
+                    sections.Ajouter(nvlsection);
+                    nvlsection = null;
+                }
             }
 
             //close Data Reader

@@ -84,6 +84,10 @@ namespace classesMetierStagiaires
             }
         }
 
+        private int idSect;
+
+        public int IdSect { get => idSect; set => idSect = value; }
+
         /// <summary>
         /// collection des stagiaires de cette section 
         /// sous forme de dictionnaire trié
@@ -97,18 +101,18 @@ namespace classesMetierStagiaires
         /// </summary>
         private DataTable dtStagiaires;
 
-
-        
         /// <summary>
         /// constructeur 
         /// </summary>
         /// <param name="leCode">le code de la section</param>
         /// <param name="leNom">le libellé de la section</param>
-        public  MSection(String leCode, String leNom)
+        public  MSection(String leCode, String leNom, int idSection)
         {
             // initialise code et nom de la section
             this.leCodeSection = leCode;
             this.NomSection = leNom;
+            this.IdSect = idSection;
+            
             // instancie un dictionnaire vide pour les stagiaires de cette section
             lesStagiaires = new SortedDictionary<int,MStagiaire>();
             // datatable : pour y copier les données stagiaires
@@ -122,13 +126,14 @@ namespace classesMetierStagiaires
 
         }
 
-        public MSection(String leCode, String leNom, DateTime ddebut, DateTime dfin)
+        public MSection(String leCode, String leNom, DateTime ddebut, DateTime dfin, int idSection)
         {
             // initialise code et nom de la section
             this.leCodeSection = leCode;
             this.NomSection = leNom;
             this.debutFormation = ddebut;
             this.finFormation = dfin;
+            this.IdSect = idSection;
 
             // instancie un dictionnaire vide pour les stagiaires de cette section
             lesStagiaires = new SortedDictionary<int, MStagiaire>();
@@ -263,11 +268,11 @@ namespace classesMetierStagiaires
 
         public static void SelectStagiaire(MSection laSection)
         {
-            string query = "SELECT * FROM mstagiaire JOIN msections ON mstagiaire.id_section=msections.id_section AND code=@code";
+            string query = "SELECT * FROM mstagiaire WHERE id_section=@section";
             laSection.SupprimerStagiaires();
 
             MySqlCommand cmd = DBConnect.GetConnexion().CreateCommand();
-            cmd.Parameters.AddWithValue("@code", laSection.CodeSection);
+            cmd.Parameters.AddWithValue("@section", laSection.IdSect);
             cmd.CommandText = query;
 
 
@@ -365,7 +370,7 @@ namespace classesMetierStagiaires
             cmd.Parameters.AddWithValue("@Type", type);
             cmd.Parameters.AddWithValue("@TypeCif", typecif);
             cmd.Parameters.AddWithValue("@FongeCif", fongecif);
-            cmd.Parameters.AddWithValue("@section", sect.CodeSection);
+            cmd.Parameters.AddWithValue("@section", sect.IdSect);
             cmd.ExecuteNonQuery();
 
             //close connection
@@ -404,7 +409,7 @@ namespace classesMetierStagiaires
                 cmd.Parameters.AddWithValue("@NbreNotes", st.NbreNotes);
                 cmd.Parameters.AddWithValue("@Type", type);
                 cmd.Parameters.AddWithValue("@Remuafpa", remuafpa);
-                cmd.Parameters.AddWithValue("@section", sect.CodeSection);
+                cmd.Parameters.AddWithValue("@section", sect.IdSect);
                 cmd.ExecuteNonQuery();
             }
             catch (MySqlException ex)

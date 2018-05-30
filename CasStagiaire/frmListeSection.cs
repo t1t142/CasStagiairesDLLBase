@@ -65,14 +65,6 @@ namespace CasStagiaire
 
         }
 
-        public void DoSomething()
-        {
-            // Write some code that does something useful here
-            // then raise the event. You can also raise an event
-            // before you execute a block of code.
-            OnRaiseCustomEvent(new CustomEventArgs("coucou"));
-
-        }
 
         // Wrap event invocations inside a protected virtual method
         // to allow derived classes to override the event invocation behavior
@@ -86,9 +78,6 @@ namespace CasStagiaire
             // Event will be null if there are no subscribers
             if (handler != null)
             {
-                // Format the string to send inside the CustomEventArgs parameter
-                e.Message += String.Format(" at {0}", DateTime.Now.ToString());
-
                 // Use the () operator to raise the event.
                 handler(this, e);
             }
@@ -96,9 +85,18 @@ namespace CasStagiaire
 
         private void btnouvrir_Click(object sender, EventArgs e)
         {
+            
+            MSection laSection;
+            String leCode;
 
+         
+            leCode = (String)this.grdSection.CurrentRow.Cells[0].Value;
+        
+            laSection = Donnees.Sections.RestituerSection(leCode);
+        
             //MessageBox.Show("ok");
-            OnRaiseCustomEvent(new CustomEventArgs("coucou"));
+            OnRaiseCustomEvent(new CustomEventArgs(laSection));
+        
         }
 
        

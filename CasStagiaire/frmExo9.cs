@@ -18,17 +18,20 @@ namespace classesMetierStagiaires
         /// <summary>
         /// la section de stagiaires gérée par ce form
         /// </summary>
-        private MSection laSection; 
+        private MSection laSection;
+        private String code;
         
         /// <summary>
         /// Constructeur 
         /// (initialise la collection de sections et insère en dur la section CDI)
         /// </summary>
-        public frmExo9()
+        public frmExo9(MSection section)
         {
+            laSection = section;
+
             InitializeComponent();
             // initialisation de la collection de sections
-            Donnees.Sections = new MSections();
+            // Donnees.Sections = new MSections();
 
             // TODO : initialisation du jeu d'essai ==> récupérer depuis BDD
             this.init();
@@ -42,19 +45,7 @@ namespace classesMetierStagiaires
         /// </summary>
         private void init()
         {
-            // pour commencer, une seule section référencée "en dur" dans ce programme
-            // instancie la section
-            this.laSection = new MSection("CDI1", "Concepteur Développeur Informatique");
-            // l'ajoute dans la collection des sections gérée par la classe de collection
-            Donnees.Sections.Ajouter(this.laSection);
-            
-            // ********** partie à modifier pour récupérer les données depuis la BDD ***********
-            //----------------------------------------------------------------------------------
-            // instancie en dur un stagiaire 
-            MStagiaire unStagiaire;
-
-            //unStagiaire = new MStagiaireDE(11111, "DUPOND", "Albert", "12 rue des Fleurs", "NICE", "06300", false);
-            
+           
             // ajoute le stagiaire instancié à la collection de la section CDI1
            // this.laSection.Ajouter(unStagiaire);
             MSection.SelectStagiaire(laSection);

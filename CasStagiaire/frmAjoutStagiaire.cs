@@ -85,7 +85,7 @@ namespace classesMetierStagiaires
                         0,
                         this.chkRemuAfpa.Checked);
                     
-                    MSection.InsertStagiaireDE(st);
+                    MSection.InsertStagiaireDE(st,laSection);
                    // this.laSection.Ajouter(st);
 
                 }
@@ -119,7 +119,7 @@ namespace classesMetierStagiaires
 
                         this.txtFongecif.Text,
                         leTypeCIF);
-                    MSection.InsertStagiaireCif(nouveauStagiaireCif);
+                    MSection.InsertStagiaireCif(nouveauStagiaireCif, laSection);
                 }
 
                 // dans tous les cas, ajouter la référence d'objet MStagiaire dans la collection de sa section

@@ -3,21 +3,22 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using classesMetierStagiaires;
 
 namespace CasStagiaire
 {
     public class CustomEventArgs : EventArgs
     {
-        public CustomEventArgs(string s)
+        public CustomEventArgs(MSection section)
         {
-            message = s;
+            this.section = section;
         }
-        private string message;
+        private MSection section;
 
-        public string Message
+        public MSection Section
         {
-            get { return message; }
-            set { message = value; }
+            get { return section; }
+            set { section = value; }
         }
     }
 

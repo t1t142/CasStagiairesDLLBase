@@ -13,6 +13,8 @@ namespace CasStagiaire
 {
     public partial class frmListeSection : Form
     {
+        public event EventHandler<CustomEventArgs> RaiseCustomEvent;
+
         public frmListeSection()
         {
             
@@ -36,10 +38,7 @@ namespace CasStagiaire
             MSections.SelectSection(Donnees.Sections);
         }
 
-                private void btnouvrir_Click(object sender, EventArgs e)
-        {
-
-        }
+        
 
         private void frmListeSection_Load(object sender, EventArgs e)
         {
@@ -51,12 +50,7 @@ namespace CasStagiaire
 
         }
 
-        private void frmListeSection_Load_1(object sender, EventArgs e)
-        {
-
-
-
-        }
+        
         private void afficheSections(MSections sections)
         {
             MSections.SelectSection(sections);
@@ -71,7 +65,45 @@ namespace CasStagiaire
 
         }
 
-      
+        public void DoSomething()
+        {
+            // Write some code that does something useful here
+            // then raise the event. You can also raise an event
+            // before you execute a block of code.
+            OnRaiseCustomEvent(new CustomEventArgs("coucou"));
+
+        }
+
+        // Wrap event invocations inside a protected virtual method
+        // to allow derived classes to override the event invocation behavior
+        protected virtual void OnRaiseCustomEvent(CustomEventArgs e)
+        {
+            // Make a temporary copy of the event to avoid possibility of
+            // a race condition if the last subscriber unsubscribes
+            // immediately after the null check and before the event is raised.
+            EventHandler<CustomEventArgs> handler = RaiseCustomEvent;
+
+            // Event will be null if there are no subscribers
+            if (handler != null)
+            {
+                // Format the string to send inside the CustomEventArgs parameter
+                e.Message += String.Format(" at {0}", DateTime.Now.ToString());
+
+                // Use the () operator to raise the event.
+                handler(this, e);
+            }
+        }
+
+        private void btnouvrir_Click(object sender, EventArgs e)
+        {
+
+            //MessageBox.Show("ok");
+            OnRaiseCustomEvent(new CustomEventArgs("coucou"));
+        }
+
+       
     }
+
 }
+
  

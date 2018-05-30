@@ -66,6 +66,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="CustomEventArgs.cs" />
     <Compile Include="Donnees.cs" />
     <Compile Include="frmAjoutSection.cs">
       <SubType>Form</SubType>

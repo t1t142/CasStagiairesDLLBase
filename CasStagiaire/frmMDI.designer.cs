@@ -108,6 +108,7 @@
             this.menuStrip.Size = new System.Drawing.Size(976, 24);
             this.menuStrip.TabIndex = 0;
             this.menuStrip.Text = "MenuStrip";
+            
             // 
             // fileMenu
             // 
@@ -175,14 +176,14 @@
             this.OpenCDIToolStripMenuItem,
             this.openDLToolStripMenuItem});
             this.openSectionToolStripMenuItem.Name = "openSectionToolStripMenuItem";
-            this.openSectionToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.openSectionToolStripMenuItem.Size = new System.Drawing.Size(119, 22);
             this.openSectionToolStripMenuItem.Text = "Section";
             this.openSectionToolStripMenuItem.Click += new System.EventHandler(this.ShowNewForm);
             // 
             // OpenCDIToolStripMenuItem
             // 
             this.OpenCDIToolStripMenuItem.Name = "OpenCDIToolStripMenuItem";
-            this.OpenCDIToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.OpenCDIToolStripMenuItem.Size = new System.Drawing.Size(93, 22);
             this.OpenCDIToolStripMenuItem.Text = "CDI";
             this.OpenCDIToolStripMenuItem.Click += new System.EventHandler(this.openCDIToolStripMenuItem_Click);
             // 
@@ -190,14 +191,14 @@
             // 
             this.openDLToolStripMenuItem.Enabled = false;
             this.openDLToolStripMenuItem.Name = "openDLToolStripMenuItem";
-            this.openDLToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.openDLToolStripMenuItem.Size = new System.Drawing.Size(93, 22);
             this.openDLToolStripMenuItem.Text = "DL";
             // 
             // openStagiaireToolStripMenuItem
             // 
             this.openStagiaireToolStripMenuItem.Enabled = false;
             this.openStagiaireToolStripMenuItem.Name = "openStagiaireToolStripMenuItem";
-            this.openStagiaireToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.openStagiaireToolStripMenuItem.Size = new System.Drawing.Size(119, 22);
             this.openStagiaireToolStripMenuItem.Text = "Stagiaire";
             // 
             // toolStripSeparator3

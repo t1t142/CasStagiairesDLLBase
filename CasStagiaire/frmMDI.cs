@@ -24,6 +24,7 @@ namespace classesMetierStagiaires
             frmListeSection listeSection = new frmListeSection();
             listeSection.MdiParent = this;
             listeSection.Show();
+            listeSection.RaiseCustomEvent += HandleCustomEvent;
             //// Créez une nouvelle instance du formulaire enfant.
             //Form childForm = new Form();
             //// Configurez-la en tant qu'enfant de ce formulaire MDI avant de l'afficher.
@@ -47,7 +48,7 @@ namespace classesMetierStagiaires
             frmExo9 leForm = new frmExo9();
             leForm.MdiParent = this;
             leForm.Show();
-
+           
         }
 
         private void SaveAsToolStripMenuItem_Click(object sender, EventArgs e)
@@ -132,5 +133,14 @@ namespace classesMetierStagiaires
         {
 
         }
+
+       
+
+        void HandleCustomEvent(object sender, CustomEventArgs e)
+        {
+           MessageBox.Show(" received this message: {0}", e.Message);
+        }
+
+       
     }
 }

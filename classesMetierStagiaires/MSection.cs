@@ -263,12 +263,11 @@ namespace classesMetierStagiaires
 
         public static void SelectStagiaire(MSection laSection)
         {
-            string query = "SELECT * FROM mstagiaire";
+            string query = "SELECT * FROM mstagiaire JOIN msections ON mstagiaire.id_section=msections.id_section AND code=@code";
             laSection.SupprimerStagiaires();
 
-
-
             MySqlCommand cmd = DBConnect.GetConnexion().CreateCommand();
+            cmd.Parameters.AddWithValue("@code", laSection.CodeSection);
             cmd.CommandText = query;
 
 
@@ -334,18 +333,17 @@ namespace classesMetierStagiaires
             //close Data Reader
             dataReader.Close();
 
-
-
-
-
         }
-       public static void InsertStagiaireCif(MStagiaireCIF st)
+
+       public static void InsertStagiaireCif(MStagiaireCIF st, MSection sect)
         {
             String type;
             String typecif;
             String fongecif;
 
-            string query = "INSERT INTO mstagiaire(`id`, `id_section`, `nom`, `prenom`, `numosia`, `rue`, `codepostal`, `ville`, `pointsnotes`, `nbrenotes`, `type`, `typecif`, `fongecif`, `remu_afpa`)  VALUES(Null,@section, @Nom, @Prenom, @NumOsia, @Rue, @CodePostal, @Ville, @PointsNotes, @NbreNotes, @Type, @TypeCif, @FongeCif, Null)";
+            string query = "INSERT INTO mstagiaire(`id`, `id_section`, `nom`, `prenom`, `numosia`, `rue`, `codepostal`, `ville`," +
+                "`pointsnotes`, `nbrenotes`, `type`, `typecif`, `fongecif`, `remu_afpa`)" +
+                "VALUES(Null,@section, @Nom, @Prenom, @NumOsia, @Rue, @CodePostal, @Ville, @PointsNotes, @NbreNotes, @Type, @TypeCif, @FongeCif, Null)";
 
             type = "CIF";
             typecif = st.TypeCifStagiaire;
@@ -367,18 +365,20 @@ namespace classesMetierStagiaires
             cmd.Parameters.AddWithValue("@Type", type);
             cmd.Parameters.AddWithValue("@TypeCif", typecif);
             cmd.Parameters.AddWithValue("@FongeCif", fongecif);
-            cmd.Parameters.AddWithValue("@section", 1);
+            cmd.Parameters.AddWithValue("@section", sect.CodeSection);
             cmd.ExecuteNonQuery();
 
             //close connection
 
         }
-        public static void InsertStagiaireDE(MStagiaireDE st)
+        public static void InsertStagiaireDE(MStagiaireDE st, MSection sect)
         {
             String type;
             Boolean remuafpa;
 
-            string query = "INSERT INTO mstagiaire (`id`, `id_section`, `nom`, `prenom`, `numosia`, `rue`, `codepostal`, `ville`, `pointsnotes`, `nbrenotes`, `type`, `typecif`, `fongecif`, `remu_afpa`) VALUES(Null,@section, @Nom, @Prenom, @NumOsia, @Rue, @CodePostal, @Ville, @PointsNotes, @NbreNotes, @Type, Null, Null, @RemuAfpa)";
+            string query = "INSERT INTO mstagiaire (`id`, `id_section`, `nom`, `prenom`, `numosia`, `rue`, `codepostal`, `ville`," +
+                "`pointsnotes`, `nbrenotes`, `type`, `typecif`, `fongecif`, `remu_afpa`)" +
+                "VALUES(Null,@section, @Nom, @Prenom, @NumOsia, @Rue, @CodePostal, @Ville, @PointsNotes, @NbreNotes, @Type, Null, Null, @RemuAfpa)";
 
             type = "DE";
             remuafpa = st.RemuAfpaStagiaire;
@@ -404,7 +404,7 @@ namespace classesMetierStagiaires
                 cmd.Parameters.AddWithValue("@NbreNotes", st.NbreNotes);
                 cmd.Parameters.AddWithValue("@Type", type);
                 cmd.Parameters.AddWithValue("@Remuafpa", remuafpa);
-                cmd.Parameters.AddWithValue("@section", 1);
+                cmd.Parameters.AddWithValue("@section", sect.CodeSection);
                 cmd.ExecuteNonQuery();
             }
             catch (MySqlException ex)
@@ -422,7 +422,8 @@ namespace classesMetierStagiaires
         //Update statement
         public static void UpdateStagiaire(MStagiaire st)
         {
-            string query = "UPDATE mstagiaire SET nom=@Nom, prenom=@Prenom,rue= @Rue,codepostal= @CodePostal,ville= @Ville,pointsnotes=@pointnotes,nbrenotes=@nombrenotes WHERE numosia= @NumOsia";
+            string query = "UPDATE mstagiaire SET nom=@Nom, prenom=@Prenom,rue= @Rue,codepostal= @CodePostal,ville= @Ville," +
+                "pointsnotes=@pointnotes,nbrenotes=@nombrenotes WHERE numosia= @NumOsia";
 
 
 

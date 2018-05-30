@@ -19,7 +19,7 @@ namespace classesMetierStagiaires
         /// la section de stagiaires gérée par ce form
         /// </summary>
         private MSection laSection;
-        
+        private String code;
         
         /// <summary>
         /// Constructeur 
@@ -31,7 +31,7 @@ namespace classesMetierStagiaires
 
             InitializeComponent();
             // initialisation de la collection de sections
-            Donnees.Sections = new MSections();
+            // Donnees.Sections = new MSections();
 
             // TODO : initialisation du jeu d'essai ==> récupérer depuis BDD
             this.init();

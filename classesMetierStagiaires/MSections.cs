@@ -33,7 +33,8 @@ namespace classesMetierStagiaires
             // ajouter à la datatable 2 colonnes personnalisées 
             this.dtSections.Columns.Add(new DataColumn("Code Section", typeof(System.String)));
             this.dtSections.Columns.Add(new DataColumn("Nom Section", typeof(System.String)));
-
+            this.dtSections.Columns.Add(new DataColumn("Date debut Section", typeof(DateTime)));
+            this.dtSections.Columns.Add(new DataColumn("Date fin Section", typeof(DateTime)));
         }
         /// <summary>
         /// ajouter une Section à la collection
@@ -146,9 +147,6 @@ namespace classesMetierStagiaires
             string query = "SELECT * FROM msections";
             sections.SupprimerSections();
 
-            
-
-
             MySqlCommand cmd = DBConnect.GetConnexion().CreateCommand();
             cmd.CommandText = query;
 
@@ -164,15 +162,15 @@ namespace classesMetierStagiaires
 
                 MSection nvlsection = new MSection(
                      dataReader["code"].ToString(),
-                    dataReader["nom"].ToString());
+                    dataReader["nom"].ToString(),
+                
+                     DateTime.Parse(dataReader["debut_formation"].ToString()),
+ 
+                DateTime.ParseExact(dataReader["date_fin"].ToString()),
 
-                //-----TODO@récuperation de la date de début et de fin
-                     //dataReader["debut_formation"].ToString(),
-                    //dataReader["date_fin"].ToString());
-                               
                     // ajout de la nouvelle à la liste des sections
-             
-                    sections.Ajouter(nvlsection);
+
+                sections.Ajouter(nvlsection);
                     nvlsection = null;
             }
 

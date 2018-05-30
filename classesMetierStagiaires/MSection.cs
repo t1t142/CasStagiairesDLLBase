@@ -255,6 +255,12 @@ namespace classesMetierStagiaires
             this.lesStagiaires.Clear();
             
         }
+
+        public override string ToString()
+        {
+            return "CodeSection : " + this.CodeSection;
+        }
+
         public static void SelectStagiaire(MSection laSection)
         {
             string query = "SELECT * FROM mstagiaire";

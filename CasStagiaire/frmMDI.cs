@@ -138,7 +138,7 @@ namespace classesMetierStagiaires
 
         void HandleCustomEvent(object sender, CustomEventArgs e)
         {
-           MessageBox.Show(" received this message: {0}", e.Message);
+           MessageBox.Show(e.Section.ToString());
         }
 
        

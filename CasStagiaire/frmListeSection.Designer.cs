@@ -69,17 +69,17 @@
             this.grdSection.AllowUserToAddRows = false;
             this.grdSection.AllowUserToDeleteRows = false;
             this.grdSection.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.grdSection.Location = new System.Drawing.Point(111, 102);
+            this.grdSection.Location = new System.Drawing.Point(131, 11);
             this.grdSection.Margin = new System.Windows.Forms.Padding(2);
             this.grdSection.Name = "grdSection";
             this.grdSection.ReadOnly = true;
-            this.grdSection.Size = new System.Drawing.Size(363, 122);
+            this.grdSection.Size = new System.Drawing.Size(451, 213);
             this.grdSection.TabIndex = 3;
             this.grdSection.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridView1_CellContentClick);
             // 
             // btnouvrir
             // 
-            this.btnouvrir.Location = new System.Drawing.Point(148, 302);
+            this.btnouvrir.Location = new System.Drawing.Point(131, 302);
             this.btnouvrir.Name = "btnouvrir";
             this.btnouvrir.Size = new System.Drawing.Size(75, 23);
             this.btnouvrir.TabIndex = 4;

@@ -33,6 +33,7 @@
             this.btnModifierSec = new System.Windows.Forms.Button();
             this.grdSection = new System.Windows.Forms.DataGridView();
             this.btnouvrir = new System.Windows.Forms.Button();
+            this.btnPrint = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.grdSection)).BeginInit();
             this.SuspendLayout();
             // 
@@ -86,11 +87,22 @@
             this.btnouvrir.UseVisualStyleBackColor = true;
             this.btnouvrir.Click += new System.EventHandler(this.btnouvrir_Click);
             // 
+            // btnPrint
+            // 
+            this.btnPrint.Location = new System.Drawing.Point(676, 136);
+            this.btnPrint.Name = "btnPrint";
+            this.btnPrint.Size = new System.Drawing.Size(75, 23);
+            this.btnPrint.TabIndex = 5;
+            this.btnPrint.Text = "Print";
+            this.btnPrint.UseVisualStyleBackColor = true;
+            this.btnPrint.Click += new System.EventHandler(this.btnPrint_Click);
+            // 
             // frmListeSection
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(879, 450);
+            this.Controls.Add(this.btnPrint);
             this.Controls.Add(this.btnouvrir);
             this.Controls.Add(this.grdSection);
             this.Controls.Add(this.btnModifierSec);
@@ -98,7 +110,6 @@
             this.Controls.Add(this.btnAjoutSec);
             this.Name = "frmListeSection";
             this.Text = "frmListeSection";
-            
             ((System.ComponentModel.ISupportInitialize)(this.grdSection)).EndInit();
             this.ResumeLayout(false);
 
@@ -111,5 +122,6 @@
         private System.Windows.Forms.Button btnModifierSec;
         private System.Windows.Forms.DataGridView grdSection;
         private System.Windows.Forms.Button btnouvrir;
+        private System.Windows.Forms.Button btnPrint;
     }
 }

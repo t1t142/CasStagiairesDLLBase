@@ -99,7 +99,10 @@ namespace CasStagiaire
         
         }
 
-       
+        private void btnPrint_Click(object sender, EventArgs e)
+        {
+            Printing.PrintReceipt();
+        }
     }
 
 }

@@ -4,6 +4,8 @@ using System.Text;
 using System.Data; // ajouté manuellement
 using MySql.Data.MySqlClient;
 using System.Globalization;
+using System.IO;
+
 
 namespace classesMetierStagiaires
 {

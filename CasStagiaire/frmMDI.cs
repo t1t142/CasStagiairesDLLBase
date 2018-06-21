@@ -46,10 +46,10 @@ namespace classesMetierStagiaires
 
             // instancier le form principal
 
-           /* frmExo9 leForm = new frmExo9();
-            leForm.MdiParent = this;
-            leForm.Show();*/
-           
+            /* frmExo9 leForm = new frmExo9();
+             leForm.MdiParent = this;
+             leForm.Show();*/
+
         }
 
         private void SaveAsToolStripMenuItem_Click(object sender, EventArgs e)
@@ -125,7 +125,7 @@ namespace classesMetierStagiaires
         private void openCDIToolStripMenuItem_Click(object sender, EventArgs e)
         {
             // instancier le form principal
-        
+
             /*frmExo9 leForm = new frmExo9();
             leForm.MdiParent = this;
             leForm.Show();*/
@@ -133,20 +133,19 @@ namespace classesMetierStagiaires
 
         private void openToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            
+
         }
 
-       
+
 
         void HandleCustomEvent(object sender, CustomEventArgs e)
         {
-           // MessageBox.Show(e.Section.ToString());
+            // MessageBox.Show(e.Section.ToString());
 
             frmExo9 leForm = new frmExo9(e.Section);
             leForm.MdiParent = this;
             leForm.Show();
         }
 
-       
     }
 }

@@ -108,7 +108,6 @@
             this.menuStrip.Size = new System.Drawing.Size(976, 24);
             this.menuStrip.TabIndex = 0;
             this.menuStrip.Text = "MenuStrip";
-            
             // 
             // fileMenu
             // 
@@ -253,6 +252,7 @@
             this.printSetupToolStripMenuItem.Name = "printSetupToolStripMenuItem";
             this.printSetupToolStripMenuItem.Size = new System.Drawing.Size(231, 22);
             this.printSetupToolStripMenuItem.Text = "Configuration de l\'impression";
+            this.printSetupToolStripMenuItem.Click += new System.EventHandler(this.printSetupToolStripMenuItem_Click);
             // 
             // toolStripSeparator5
             // 

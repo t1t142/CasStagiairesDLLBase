@@ -162,6 +162,7 @@
     <Compile Include="frmVisuStagiaire.designer.cs">
       <DependentUpon>frmVisuStagiaire.cs</DependentUpon>
     </Compile>
+    <Compile Include="MyPageHeader.cs" />
     <Compile Include="Outils.cs" />
     <Compile Include="Printing.cs" />
     <Compile Include="Program.cs" />

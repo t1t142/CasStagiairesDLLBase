@@ -278,7 +278,7 @@ namespace classesMetierStagiaires
 
             //Create a data reader and Execute the command
             MySqlDataReader dataReader = cmd.ExecuteReader();
-
+           
             //Read the data and store them in the list
             while (dataReader.Read())
             {
